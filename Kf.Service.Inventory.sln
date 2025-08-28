@@ -7,9 +7,53 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Data.Abstractions", "src\Kf.Service.Inventory.Data.Abstractions\Kf.Service.Inventory.Data.Abstractions.csproj", "{C65D9DE1-60FF-4EB8-9313-E7C659DF2C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Data", "src\Kf.Service.Inventory.Data\Kf.Service.Inventory.Data.csproj", "{03E1CE90-2B7B-42C6-AB5B-EF1A5B33A356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Data.PostgreSql", "src\Kf.Service.Inventory.Data.PostgreSql\Kf.Service.Inventory.Data.PostgreSql.csproj", "{10F4AECC-6D06-4A5B-B471-51D60EFE9A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Domain.Abstractions", "src\Kf.Service.Inventory.Domain.Abstractions\Kf.Service.Inventory.Domain.Abstractions.csproj", "{8154CC80-ECAD-42E5-A1B1-A234D3DEAE52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Domain", "src\Kf.Service.Inventory.Domain\Kf.Service.Inventory.Domain.csproj", "{667CC9CA-55F5-4D22-A6B3-F1E2A29A0093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.API.Abstractions", "src\Kf.Service.Inventory.API.Abstractions\Kf.Service.Inventory.API.Abstractions.csproj", "{BE6E22B3-DAFD-43D3-954F-B5F0A7580B7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.API", "src\Kf.Service.Inventory.API\Kf.Service.Inventory.API.csproj", "{88CD95A8-2F00-4F29-9AE1-C755E1A6FFC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C65D9DE1-60FF-4EB8-9313-E7C659DF2C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C65D9DE1-60FF-4EB8-9313-E7C659DF2C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C65D9DE1-60FF-4EB8-9313-E7C659DF2C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C65D9DE1-60FF-4EB8-9313-E7C659DF2C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E1CE90-2B7B-42C6-AB5B-EF1A5B33A356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E1CE90-2B7B-42C6-AB5B-EF1A5B33A356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E1CE90-2B7B-42C6-AB5B-EF1A5B33A356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E1CE90-2B7B-42C6-AB5B-EF1A5B33A356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F4AECC-6D06-4A5B-B471-51D60EFE9A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F4AECC-6D06-4A5B-B471-51D60EFE9A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F4AECC-6D06-4A5B-B471-51D60EFE9A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F4AECC-6D06-4A5B-B471-51D60EFE9A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8154CC80-ECAD-42E5-A1B1-A234D3DEAE52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8154CC80-ECAD-42E5-A1B1-A234D3DEAE52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8154CC80-ECAD-42E5-A1B1-A234D3DEAE52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8154CC80-ECAD-42E5-A1B1-A234D3DEAE52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667CC9CA-55F5-4D22-A6B3-F1E2A29A0093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667CC9CA-55F5-4D22-A6B3-F1E2A29A0093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667CC9CA-55F5-4D22-A6B3-F1E2A29A0093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667CC9CA-55F5-4D22-A6B3-F1E2A29A0093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6E22B3-DAFD-43D3-954F-B5F0A7580B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6E22B3-DAFD-43D3-954F-B5F0A7580B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6E22B3-DAFD-43D3-954F-B5F0A7580B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6E22B3-DAFD-43D3-954F-B5F0A7580B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88CD95A8-2F00-4F29-9AE1-C755E1A6FFC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CD95A8-2F00-4F29-9AE1-C755E1A6FFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88CD95A8-2F00-4F29-9AE1-C755E1A6FFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CD95A8-2F00-4F29-9AE1-C755E1A6FFC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

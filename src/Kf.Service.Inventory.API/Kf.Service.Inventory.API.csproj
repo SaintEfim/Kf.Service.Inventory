@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Kf.Service.Inventory.API.Abstractions\Kf.Service.Inventory.API.Abstractions.csproj" />
+      <ProjectReference Include="..\Kf.Service.Inventory.Domain.Abstractions\Kf.Service.Inventory.Domain.Abstractions.csproj" />
+      <ProjectReference Include="..\Kf.Service.Inventory.Domain\Kf.Service.Inventory.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.8" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="NSwag.AspNetCore" Version="14.5.0" />
+      <PackageReference Include="Sieve" Version="2.5.5" />
+    </ItemGroup>
+
+</Project>
