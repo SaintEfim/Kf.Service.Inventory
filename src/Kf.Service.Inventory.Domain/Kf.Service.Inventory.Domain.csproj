@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="8.4.0" />
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Kf.Service.Inventory.Data.PostgreSql\Kf.Service.Inventory.Data.PostgreSql.csproj" />
+      <ProjectReference Include="..\Kf.Service.Inventory.Domain.Abstractions\Kf.Service.Inventory.Domain.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
