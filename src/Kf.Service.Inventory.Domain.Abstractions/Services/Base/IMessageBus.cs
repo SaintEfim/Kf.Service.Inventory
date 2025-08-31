@@ -1,6 +1,6 @@
 ﻿namespace Kf.Service.Inventory.Domain.Services.Base;
 
-public interface IProducer
+public interface IMessageBus
 {
     Task ProduceAsync<T>(
         T message,

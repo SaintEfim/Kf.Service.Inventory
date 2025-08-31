@@ -2,6 +2,6 @@
 
 namespace Kf.Service.Inventory.Domain.Services;
 
-public interface IInventoryProducer
-    : IProducer,
+public interface IInventoryMessageBus
+    : IMessageBus,
         IDisposable;

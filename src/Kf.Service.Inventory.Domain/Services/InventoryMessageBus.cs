@@ -1,21 +1,38 @@
 ﻿using Confluent.Kafka;
+using Kf.Service.Inventory.Domain.Models.Base;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Kf.Service.Inventory.Domain.Services;
 
-public class InventoryProducer
-    : IInventoryProducer
+public class InventoryMessageBus : IInventoryMessageBus
 {
     private readonly IProducer<string, string> _producer;
 
     private readonly string _topic;
 
-    private readonly ILogger<InventoryProducer> _logger;
+    private readonly ILogger<InventoryMessageBus> _logger;
 
-    public InventoryProducer(
+    /* public InventoryMessageBus(
+        ILogger<InventoryMessageBus> logger,
+        IOptions<KafkaConfig> kafkaConfig)
+    {
+        _logger = logger;
+
+        var config = new ProducerConfig
+        {
+            BootstrapServers = kafkaConfig.Value.BootstrapServers,
+            MessageTimeoutMs = kafkaConfig.Value.KafkaHandleConfig.MessageTimeoutMs
+        };
+
+        _topic = kafkaConfig.Value.KafkaHandleConfig.Topic ?? throw new Exception("Not found Kafka Topic");
+        _producer = new ProducerBuilder<string, string>(config).Build();
+    } */
+
+    public InventoryMessageBus(
         IConfiguration configuration,
-        ILogger<InventoryProducer> logger)
+        ILogger<InventoryMessageBus> logger)
     {
         _logger = logger;
 
@@ -23,8 +40,7 @@ public class InventoryProducer
         {
             BootstrapServers = configuration.GetSection("Kafka:BootstrapServers")
                 .Value,
-            Acks = Acks.All,
-            MessageTimeoutMs = 2000
+            Acks = Acks.All
         };
 
         _topic = configuration.GetSection("Kafka:Topic")
