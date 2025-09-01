@@ -30,8 +30,8 @@ public abstract class KafkaMessageBusBase<TMessageBus>
         var json = System.Text.Json.JsonSerializer.Serialize(message);
         var kafkaMessage = new Message<string, string> { Value = json };
 
-        var deliveryResult =
-            await _producer.ProduceAsync(_configKafka.Value.Send.Topic, kafkaMessage, cancellationToken);
+        var deliveryResult = await _producer.ProduceAsync(_configKafka.Value.SendConfiguration.Topic, kafkaMessage,
+            cancellationToken);
 
         _logger.LogInformation("Message delivered to {DeliveryResultTopicPartitionOffset}",
             deliveryResult.TopicPartitionOffset);
@@ -43,7 +43,7 @@ public abstract class KafkaMessageBusBase<TMessageBus>
         var config = new ProducerConfig
         {
             BootstrapServers = configKafka.Value.BootstrapServers,
-            MessageTimeoutMs = configKafka.Value.Send.MessageTimeoutMs
+            MessageTimeoutMs = configKafka.Value.SendConfiguration.MessageTimeoutMs
         };
 
         return new ProducerBuilder<string, string>(config).SetLogHandler(ProducerLogHandler)

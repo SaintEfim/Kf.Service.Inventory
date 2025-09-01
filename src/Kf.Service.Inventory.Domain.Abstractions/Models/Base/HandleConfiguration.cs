@@ -1,6 +1,6 @@
 ﻿namespace Kf.Service.Inventory.Domain.Models.Base;
 
-public class Handle
+public class HandleConfiguration
 {
     public string Topic { get; set; } = string.Empty;
 
