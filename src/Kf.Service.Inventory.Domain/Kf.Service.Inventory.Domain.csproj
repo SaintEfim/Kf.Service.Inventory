@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Kf.Service.Inventory.Data.PostgreSql\Kf.Service.Inventory.Data.PostgreSql.csproj" />
       <ProjectReference Include="..\Kf.Service.Inventory.Domain.Abstractions\Kf.Service.Inventory.Domain.Abstractions.csproj" />
+      <ProjectReference Include="..\Kf.Service.Inventory.Messages\Kf.Service.Inventory.Messages.csproj" />
     </ItemGroup>
 
 </Project>

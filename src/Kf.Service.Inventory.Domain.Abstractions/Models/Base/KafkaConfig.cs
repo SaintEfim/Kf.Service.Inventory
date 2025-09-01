@@ -4,7 +4,7 @@ public class KafkaConfig
 {
     public string BootstrapServers { get; set; } = string.Empty;
 
-    public KafkaHandleConfig KafkaHandleConfig { get; set; } = null!;
+    public Handle Handle { get; set; } = null!;
 
-    public KafkaSendConfig KafkaSendConfig { get; set; } = null!;
+    public Send Send { get; set; } = null!;
 }

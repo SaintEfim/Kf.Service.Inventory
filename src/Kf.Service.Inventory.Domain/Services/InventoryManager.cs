@@ -3,6 +3,8 @@ using Kf.Service.Inventory.Data.Models;
 using Kf.Service.Inventory.Data.Repositories;
 using Kf.Service.Inventory.Domain.Models;
 using Kf.Service.Inventory.Domain.Services.Base;
+using Kf.Service.Inventory.MessageBus.Models;
+using Kf.Service.Inventory.Messages.Inventory;
 
 namespace Kf.Service.Inventory.Domain.Services;
 
@@ -21,14 +23,42 @@ public class InventoryManager
         _messageBus = messageBus;
     }
 
-    public async Task<InventoryModel> Create(
+    public override async Task<InventoryModel> Create(
         InventoryModel model,
         CancellationToken cancellationToken = default)
     {
         var createdItem = await base.Create(model, cancellationToken);
 
-        await _messageBus.ProduceAsync(model, cancellationToken);
+        var inventoryCreate = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(createdItem) };
+
+        await _messageBus.ProduceAsync(inventoryCreate, cancellationToken);
 
         return createdItem;
+    }
+
+    public override async Task<InventoryModel> Update(
+        InventoryModel model,
+        CancellationToken cancellationToken = default)
+    {
+        var updatedItem = await base.Update(model, cancellationToken);
+
+        var inventoryUpdate = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(updatedItem) };
+
+        await _messageBus.ProduceAsync(inventoryUpdate, cancellationToken);
+
+        return updatedItem;
+    }
+
+    public override async Task<InventoryModel> Delete(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        var deletedItem = await base.Delete(id, cancellationToken);
+
+        var inventoryDelete = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(deletedItem) };
+
+        await _messageBus.ProduceAsync(inventoryDelete, cancellationToken);
+
+        return deletedItem;
     }
 }

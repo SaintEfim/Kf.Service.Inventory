@@ -2,6 +2,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Kf.Service.Inventory.Domain;
+using Kf.Service.Inventory.Domain.Models.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,8 @@ builder.Services
     .AddNewtonsoftJson();
 
 builder.Services.AddOpenApiDocument();
-
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly, Assembly.GetExecutingAssembly());
+builder.Services.Configure<KafkaConfig>(builder.Configuration.GetSection("KafkaConfig"));
 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
