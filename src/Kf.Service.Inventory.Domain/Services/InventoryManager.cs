@@ -31,7 +31,7 @@ public class InventoryManager
 
         var inventoryCreate = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(createdItem) };
 
-        await _messageBus.ProduceAsync(inventoryCreate, cancellationToken);
+        await _messageBus.SendMessage(inventoryCreate, cancellationToken);
 
         return createdItem;
     }
@@ -44,7 +44,7 @@ public class InventoryManager
 
         var inventoryUpdate = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(updatedItem) };
 
-        await _messageBus.ProduceAsync(inventoryUpdate, cancellationToken);
+        await _messageBus.SendMessage(inventoryUpdate, cancellationToken);
 
         return updatedItem;
     }
@@ -57,7 +57,7 @@ public class InventoryManager
 
         var inventoryDelete = new InventoryCreateMessage { Inventory = Mapper.Map<InventoryData>(deletedItem) };
 
-        await _messageBus.ProduceAsync(inventoryDelete, cancellationToken);
+        await _messageBus.SendMessage(inventoryDelete, cancellationToken);
 
         return deletedItem;
     }

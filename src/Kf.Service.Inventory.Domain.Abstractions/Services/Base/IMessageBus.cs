@@ -2,7 +2,10 @@
 
 public interface IMessageBus
 {
-    Task ProduceAsync<T>(
+    Task SendMessage<T>(
         T message,
         CancellationToken cancellationToken = default);
+
+    Task StartHandling(
+        CancellationToken stoppingToken = default);
 }

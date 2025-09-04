@@ -1,4 +1,5 @@
-﻿using Kf.Service.Inventory.Domain.Models.Base;
+﻿using Autofac.Features.Indexed;
+using Kf.Service.Inventory.Domain.Models.Base;
 using Kf.Service.Inventory.Domain.Services.Base;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -6,13 +7,14 @@ using Microsoft.Extensions.Options;
 namespace Kf.Service.Inventory.Domain.Services;
 
 public class InventoryMessageBus
-    : KafkaMessageBusBase<InventoryMessageBus>,
+    : KafkaMessageBusBase<IInventoryMessageHandler>,
         IInventoryMessageBus
 {
     public InventoryMessageBus(
         IOptions<KafkaConfig> configKafka,
-        ILogger<InventoryMessageBus> logger)
-        : base(configKafka, logger)
+        ILogger<IInventoryMessageHandler> logger,
+        IIndex<string, IInventoryMessageHandler> handlers)
+        : base(configKafka, logger, handlers)
     {
     }
 }

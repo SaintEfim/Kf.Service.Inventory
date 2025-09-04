@@ -3,6 +3,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Kf.Service.Inventory.Domain;
 using Kf.Service.Inventory.Domain.Models.Base;
+using Kf.Service.Inventory.Domain.Services.Base;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ builder.Services.Configure<KafkaConfig>(builder.Configuration.GetSection("KafkaC
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
     containerBuilder.RegisterModule<InventoryDomainModule>();
+    containerBuilder.RegisterType<MessageBusHandleManager>()
+        .AsImplementedInterfaces()
+        .SingleInstance();
 });
 
 var app = builder.Build();
