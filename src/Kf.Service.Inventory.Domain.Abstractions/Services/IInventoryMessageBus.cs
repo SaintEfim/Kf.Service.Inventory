@@ -1,6 +1,6 @@
 ﻿using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 
-namespace Kf.Service.Inventory.Domain.Services.Base;
+namespace Kf.Service.Inventory.Domain.Services;
 
 public interface IInventoryMessageBus
     : IMessageBus,
