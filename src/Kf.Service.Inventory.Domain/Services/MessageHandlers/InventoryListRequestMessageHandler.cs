@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kf.Service.Inventory.Domain.Models.Base.Kafka;
+using Kf.Service.Inventory.Domain.Services.Base;
 using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 using Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 using Kf.Service.Inventory.Messages.Inventory;

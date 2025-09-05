@@ -1,5 +1,6 @@
 ﻿using Autofac.Features.Indexed;
 using Kf.Service.Inventory.Domain.Models.Base.Kafka;
+using Kf.Service.Inventory.Domain.Services.Base;
 using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
