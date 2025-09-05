@@ -2,6 +2,7 @@ using Autofac;
 using Kf.Service.Inventory.Data.PosgreSql;
 using Kf.Service.Inventory.Domain.Services;
 using Kf.Service.Inventory.Domain.Services.Base;
+using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 
 namespace Kf.Service.Inventory.Domain;
 
