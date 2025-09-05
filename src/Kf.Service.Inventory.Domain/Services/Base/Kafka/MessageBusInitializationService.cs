@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Kf.Service.Inventory.Domain.Services.Base.Kafka;
 
