@@ -42,7 +42,12 @@ public abstract class KafkaMessageBusBase<TMessageHandler> : IDisposable
         T message,
         CancellationToken cancellationToken = default)
     {
-        var kafkaMessage = new Message<string, byte[]> { Value = ObjectToByteArray(message!) };
+        var kafkaMessage = new Message<string, byte[]>
+        {
+            Key = message!.GetType()
+                .Name,
+            Value = ObjectToByteArray(message!)
+        };
 
         var producer = GetProducer(_configKafka.Value);
 
@@ -131,62 +136,65 @@ public abstract class KafkaMessageBusBase<TMessageHandler> : IDisposable
 
         try
         {
-            consumer.Subscribe(_configKafka.Value.HandleConfiguration.Topic);
-
             while (!cancellationToken.IsCancellationRequested)
             {
-                try
+                consumer.Subscribe(_configKafka.Value.HandleConfiguration.Topic);
+
+                while (!cancellationToken.IsCancellationRequested)
                 {
-                    var result = consumer.Consume(cancellationToken);
-
-                    var handleResult = await HandleMessage(result, cancellationToken)
-                        .ConfigureAwait(false);
-
-                    switch (handleResult)
+                    try
                     {
-                        case MessageHandlingResult.Dropped:
-                        case MessageHandlingResult.Succeeded:
-                            try
-                            {
-                                consumer.Commit(result);
-                            }
-                            catch (Exception commitEx)
-                            {
-                                _logger.LogError(commitEx, "Commit failed for topic {Topic}",
-                                    _configKafka.Value.HandleConfiguration.Topic);
-                            }
+                        var result = consumer.Consume(cancellationToken);
 
-                            break;
+                        var handleResult = await HandleMessage(result, cancellationToken)
+                            .ConfigureAwait(false);
 
-                        case MessageHandlingResult.FailedRequeue:
-                            break;
+                        switch (handleResult)
+                        {
+                            case MessageHandlingResult.Dropped:
+                            case MessageHandlingResult.Succeeded:
+                                try
+                                {
+                                    consumer.Commit(result);
+                                }
+                                catch (Exception commitEx)
+                                {
+                                    _logger.LogError(commitEx, "Commit failed for topic {Topic}",
+                                        _configKafka.Value.HandleConfiguration.Topic);
+                                }
 
-                        case MessageHandlingResult.FailedSentToDeadLetterQueue:
-                            try
-                            {
-                                consumer.Commit(result);
-                            }
-                            catch (Exception commitEx)
-                            {
-                                _logger.LogError(commitEx, "Commit failed for topic {Topic}",
-                                    _configKafka.Value.HandleConfiguration.Topic);
-                            }
+                                break;
 
-                            break;
+                            case MessageHandlingResult.FailedRequeue:
+                                break;
 
-                        default:
-                            _logger.LogError("Unknown handle result {HandleResult}", handleResult);
-                            break;
+                            case MessageHandlingResult.FailedSentToDeadLetterQueue:
+                                try
+                                {
+                                    consumer.Commit(result);
+                                }
+                                catch (Exception commitEx)
+                                {
+                                    _logger.LogError(commitEx, "Commit failed for topic {Topic}",
+                                        _configKafka.Value.HandleConfiguration.Topic);
+                                }
+
+                                break;
+
+                            default:
+                                _logger.LogError("Unknown handle result {HandleResult}", handleResult);
+                                break;
+                        }
                     }
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError(e, "Consume error for topic {Topic}",
-                        _configKafka.Value.HandleConfiguration.Topic);
+                    catch (OperationCanceledException)
+                    {
+                        break;
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e, "Consume error for topic {Topic}",
+                            _configKafka.Value.HandleConfiguration.Topic);
+                    }
                 }
             }
         }
