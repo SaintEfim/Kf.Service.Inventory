@@ -2,5 +2,6 @@
 
 public interface ITopicCreator
 {
-    
+    Task CreateTopic(
+        CancellationToken cancellationToken = default);
 }

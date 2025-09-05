@@ -1,6 +1,21 @@
-﻿namespace Kf.Service.Inventory.Domain.Services.Base.Kafka;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-public class MessageBusInitializationService
+namespace Kf.Service.Inventory.Domain.Services.Base.Kafka;
+
+public class MessageBusInitializationService : BackgroundService
 {
-    
+    private readonly ITopicCreator _topicCreator;
+
+    public MessageBusInitializationService(
+        ITopicCreator topicCreator)
+    {
+        _topicCreator = topicCreator;
+    }
+
+    protected override Task ExecuteAsync(
+        CancellationToken stoppingToken)
+    {
+        return _topicCreator.CreateTopic(stoppingToken);
+    }
 }
