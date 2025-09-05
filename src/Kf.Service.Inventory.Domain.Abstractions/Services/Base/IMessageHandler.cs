@@ -1,4 +1,4 @@
-﻿using Kf.Service.Inventory.Domain.Models.Base;
+﻿using Kf.Service.Inventory.Domain.Models.Base.Kafka;
 
 namespace Kf.Service.Inventory.Domain.Services.Base;
 

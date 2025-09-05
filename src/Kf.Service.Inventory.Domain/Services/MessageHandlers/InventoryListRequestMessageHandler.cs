@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using Kf.Service.Inventory.Domain.Models.Base;
-using Kf.Service.Inventory.Domain.Services.Base.Handlers;
+using Kf.Service.Inventory.Domain.Models.Base.Kafka;
+using Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 using Kf.Service.Inventory.Messages.Inventory;
 using Kf.Service.Inventory.Messages.Models;
 using Kf.Service.Inventory.Messages.Warehouse;
-using Microsoft.Extensions.Logging;
 
 namespace Kf.Service.Inventory.Domain.Services.MessageHandlers;
 
@@ -18,40 +17,25 @@ public class InventoryListRequestMessageHandler
 
     private readonly IInventoryMessageBus _messageBus;
 
-    private readonly ILogger<InventoryListRequestMessageHandler> _logger;
-
     public InventoryListRequestMessageHandler(
         IMapper mapper,
-        ILogger<InventoryListRequestMessageHandler> logger,
         IInventoryProvider contractorProvider,
         IInventoryMessageBus messageBus)
     {
         _mapper = mapper;
         _contractorProvider = contractorProvider;
         _messageBus = messageBus;
-        _logger = logger;
     }
 
     protected override async Task<MessageHandlingResult> Handle(
         WarehouseInventoryListRequestMessage message,
         CancellationToken cancellationToken = default)
     {
-        try
-        {
-            var samplePoints = await _contractorProvider.Get(cancellationToken: cancellationToken);
+        var samplePoints = await _contractorProvider.Get(cancellationToken: cancellationToken);
 
-            var answerMessage = new InventoryListMessage
-            {
-                Inventories = _mapper.Map<List<InventoryData>>(samplePoints)
-            };
+        var answerMessage = new InventoryListMessage { Inventories = _mapper.Map<List<InventoryData>>(samplePoints) };
 
-            await _messageBus.SendMessage(answerMessage, cancellationToken);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Error on handling message {message}", nameof(WarehouseInventoryListRequestMessage));
-            return MessageHandlingResult.Dropped;
-        }
+        await _messageBus.SendMessage(answerMessage, cancellationToken);
 
         return MessageHandlingResult.Succeeded;
     }

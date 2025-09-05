@@ -4,5 +4,5 @@ namespace Kf.Service.Inventory.Messages.Models;
 
 public class InventoryListMessage
 {
-    public required List<InventoryData> Inventories { get; set; } = [];
+    public required List<InventoryData> Inventories { get; set; }
 }

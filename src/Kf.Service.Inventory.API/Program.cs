@@ -2,8 +2,8 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Kf.Service.Inventory.Domain;
-using Kf.Service.Inventory.Domain.Models.Base;
-using Kf.Service.Inventory.Domain.Services.Base;
+using Kf.Service.Inventory.Domain.Models.Base.Kafka;
+using Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 

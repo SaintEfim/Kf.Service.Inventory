@@ -1,12 +1,12 @@
 using System.Text;
 using Autofac.Features.Indexed;
 using Confluent.Kafka;
-using Kf.Service.Inventory.Domain.Models.Base;
+using Kf.Service.Inventory.Domain.Models.Base.Kafka;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Kf.Service.Inventory.Domain.Services.Base;
+namespace Kf.Service.Inventory.Domain.Services.Base.Kafka;
 
 public abstract class KafkaMessageBusBase<TMessageHandler> : IDisposable
     where TMessageHandler : IMessageHandler

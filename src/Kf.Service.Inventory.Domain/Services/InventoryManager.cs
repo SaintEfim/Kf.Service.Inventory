@@ -3,8 +3,8 @@ using Kf.Service.Inventory.Data.Models;
 using Kf.Service.Inventory.Data.Repositories;
 using Kf.Service.Inventory.Domain.Models;
 using Kf.Service.Inventory.Domain.Services.Base;
-using Kf.Service.Inventory.MessageBus.Models;
 using Kf.Service.Inventory.Messages.Inventory;
+using Kf.Service.Inventory.Messages.Models;
 
 namespace Kf.Service.Inventory.Domain.Services;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-namespace Kf.Service.Inventory.Domain.Services.Base;
+namespace Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 
 public sealed class MessageBusHandleManager : BackgroundService
 {

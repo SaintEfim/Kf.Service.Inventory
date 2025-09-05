@@ -1,4 +1,4 @@
-﻿namespace Kf.Service.Inventory.Domain.Models.Base;
+﻿namespace Kf.Service.Inventory.Domain.Models.Base.Kafka;
 
 public class SendConfiguration
 {
