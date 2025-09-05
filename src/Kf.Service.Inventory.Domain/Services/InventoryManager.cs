@@ -3,7 +3,6 @@ using Kf.Service.Inventory.Data.Models;
 using Kf.Service.Inventory.Data.Repositories;
 using Kf.Service.Inventory.Domain.Models;
 using Kf.Service.Inventory.Domain.Services.Base;
-using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 using Kf.Service.Inventory.Messages.Inventory;
 using Kf.Service.Inventory.Messages.Models;
 
@@ -43,7 +42,7 @@ public class InventoryManager
     {
         var updatedItem = await base.Update(model, cancellationToken);
 
-        var inventoryUpdate = new InventoryCreatedMessage { Inventory = Mapper.Map<InventoryData>(updatedItem) };
+        var inventoryUpdate = new InventoryUpdatedMessage { Inventory = Mapper.Map<InventoryData>(updatedItem) };
 
         await _messageBus.SendMessage(inventoryUpdate, cancellationToken);
 
@@ -56,7 +55,7 @@ public class InventoryManager
     {
         var deletedItem = await base.Delete(id, cancellationToken);
 
-        var inventoryDelete = new InventoryCreatedMessage { Inventory = Mapper.Map<InventoryData>(deletedItem) };
+        var inventoryDelete = new InventoryDeletedMessage { Inventory = Mapper.Map<InventoryData>(deletedItem) };
 
         await _messageBus.SendMessage(inventoryDelete, cancellationToken);
 

@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Kf.Service.Inventory.Domain.Models.Base.Kafka;
-using Kf.Service.Inventory.Domain.Services.Base;
-using Kf.Service.Inventory.Domain.Services.Base.Kafka;
 using Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 using Kf.Service.Inventory.Messages.Inventory;
 using Kf.Service.Inventory.Messages.Models;
@@ -33,9 +31,9 @@ public class InventoryListRequestMessageHandler
         WarehouseInventoryListRequestMessage message,
         CancellationToken cancellationToken = default)
     {
-        var samplePoints = await _contractorProvider.Get(cancellationToken: cancellationToken);
+        var inventories = await _contractorProvider.Get(cancellationToken: cancellationToken);
 
-        var answerMessage = new InventoryListMessage { Inventories = _mapper.Map<List<InventoryData>>(samplePoints) };
+        var answerMessage = new InventoryListMessage { Inventories = _mapper.Map<List<InventoryData>>(inventories) };
 
         await _messageBus.SendMessage(answerMessage, cancellationToken);
 
