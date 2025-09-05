@@ -3,7 +3,7 @@ using Kf.Service.Inventory.Domain.Models.Base.Kafka;
 using Kf.Service.Inventory.Domain.Services.Base.Kafka.Handlers;
 using Kf.Service.Inventory.Messages.Inventory;
 using Kf.Service.Inventory.Messages.Models;
-using Kf.Service.Inventory.Messages.Warehouse;
+using Kf.Service.Warehouse.Messages.Warehouse;
 
 namespace Kf.Service.Inventory.Domain.Services.MessageHandlers;
 

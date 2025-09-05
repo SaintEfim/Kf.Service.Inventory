@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.API", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Inventory.Messages", "src\Kf.Service.Inventory.Messages\Kf.Service.Inventory.Messages.csproj", "{2F8C28FF-064B-44F9-9DB7-6A15EB7F39F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kf.Service.Warehouse.Messages", "src\Kf.Service.Warehouse.Messages\Kf.Service.Warehouse.Messages.csproj", "{D2E51240-8457-4894-A0A4-AB90CDB777C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,5 +63,9 @@ Global
 		{2F8C28FF-064B-44F9-9DB7-6A15EB7F39F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F8C28FF-064B-44F9-9DB7-6A15EB7F39F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F8C28FF-064B-44F9-9DB7-6A15EB7F39F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E51240-8457-4894-A0A4-AB90CDB777C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E51240-8457-4894-A0A4-AB90CDB777C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E51240-8457-4894-A0A4-AB90CDB777C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E51240-8457-4894-A0A4-AB90CDB777C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
