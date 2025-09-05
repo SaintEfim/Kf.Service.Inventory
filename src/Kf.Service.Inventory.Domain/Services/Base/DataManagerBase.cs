@@ -21,21 +21,21 @@ public abstract class DataManagerBase<TModel, TEntity, TRepository> : IDataManag
     protected IMapper Mapper { get; }
     protected TRepository Repository { get; }
 
-    public async Task<TModel> Create(
+    public virtual async Task<TModel> Create(
         TModel model,
         CancellationToken cancellationToken = default)
     {
         return Mapper.Map<TModel>(await Repository.Create(Mapper.Map<TEntity>(model), cancellationToken));
     }
 
-    public async Task<TModel> Update(
+    public virtual async Task<TModel> Update(
         TModel model,
         CancellationToken cancellationToken = default)
     {
         return Mapper.Map<TModel>(await Repository.Update(Mapper.Map<TEntity>(model), cancellationToken));
     }
 
-    public async Task<TModel> Delete(
+    public virtual async Task<TModel> Delete(
         Guid id,
         CancellationToken cancellationToken = default)
     {

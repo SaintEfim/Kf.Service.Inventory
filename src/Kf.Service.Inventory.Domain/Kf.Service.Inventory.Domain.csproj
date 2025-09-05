@@ -9,11 +9,15 @@
     <ItemGroup>
       <PackageReference Include="Autofac" Version="8.4.0" />
       <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="Confluent.Kafka" Version="2.11.1" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Kf.Service.Inventory.Data.PostgreSql\Kf.Service.Inventory.Data.PostgreSql.csproj" />
       <ProjectReference Include="..\Kf.Service.Inventory.Domain.Abstractions\Kf.Service.Inventory.Domain.Abstractions.csproj" />
+      <ProjectReference Include="..\Kf.Service.Inventory.Messages\Kf.Service.Inventory.Messages.csproj" />
     </ItemGroup>
 
 </Project>
